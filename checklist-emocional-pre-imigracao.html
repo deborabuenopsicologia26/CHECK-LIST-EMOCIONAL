@@ -560,17 +560,18 @@ function submitGate(e){
     return;
   }
 
-  // === INTEGRAÇÃO COM BREVO ===
-  // Substitua a linha abaixo pela action do seu formulário Brevo
-  // (Brevo > Contacts > Forms > pegar o HTML do form e copiar o "action" e os campos hidden).
-  // Exemplo de envio via fetch para não recarregar a página:
-  //
-  // fetch("URL_DO_SEU_FORMULARIO_BREVO", {
-  //   method: "POST",
-  //   mode: "no-cors",
-  //   headers: {"Content-Type": "application/x-www-form-urlencoded"},
-  //   body: new URLSearchParams({ EMAIL: email, PRENOM: name, ... campos_hidden_do_brevo })
-  // });
+  // === INTEGRAÇÃO COM BREVO (lista: Leads - Check list Emocional) ===
+  fetch("https://1bda0c05.sibforms.com/serve/MUIFABMS03xE6FjzmIo7i0cZaXO_hEA5DJsfUGbUZ0x-r6DO7zsYIKeXXw5bABsrUxIbjobxyxSBtYE7aIJYXQZj-uM7ypJ-uLsouuNeVoeW8SfTGCRlCtm5yAs82QRzxNFTVKczBUm-7-xeiQZyrFQm2rMquQIg7sWXl8GRnPU-I-MR_2eL5yMZ5uVuyFCtEucASrh7C0Qz1OnBcg==", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    body: new URLSearchParams({
+      NOME: name,
+      EMAIL: email,
+      email_address_check: "",
+      locale: "pt"
+    })
+  }).catch(() => { /* envio silencioso: não bloqueia a exibição do resultado mesmo se falhar */ });
 
   window.leadData = { name, email };
   screen = "result";
